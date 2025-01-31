@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fafafa;
+  color: #212121;
+  line-height: 1.5;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.list {
+  margin-top: 175px;
+  gap: 20px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+button {
+  font-family: "Montserrat", sans-serif;
+  border-radius: 4px;
+  border: 1px solid gray;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.timer_input {
+  border: 1px solid gray;
+  border-radius: 2px;
+  padding: 5px 10px;
+}
+
+.timer_btn {
+  padding: 5px 10px;
+}
+
+.timer {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.value {
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.label {
+  font-size: 20px;
+}
+
+.submit_button {
+  margin-top: 20px;
+  margin-left: 20px;
+}
