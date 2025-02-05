@@ -1,4 +1,5 @@
 import $ from "jquery";
+import Notiflix from 'notiflix';
 
 const formWrapper = document.querySelector('.form-wrapper');
 
@@ -50,24 +51,31 @@ class densitySearch extends physikTask {
 }
 
 const task1Solve = () => {
-    console.log("Task1 solve");
-
+    const form = document.querySelector('.taskForm');
+    const resultText = document.querySelector('.taskResult');
     const speed = document.getElementById('speed').value;
     const time = document.getElementById('time').value;
     
     const task1 = new waySearchTask(speed, time);
     const ress = task1.solveWaySearchTask();
-    console.log("task1 result is: " + ress);
+    resultText.innerHTML = ``;
+    resultText.innerHTML = `Result is ${ress}`;
 }
 
 const task1Markup = () => {
     formWrapper.innerHTML = `
-        <form>
-            <label for="speed">Enter speed:</label>
-            <input type="number" id="speed" required>
-            <label for="time">Enter time:</label>
-            <input type="number" id="time" required>
-            <button type="button" class="task1Btn">Calculate</button>
+    <p class="taskLabel">Розрахунок рівномірного прямолінійного руху</p>
+        <form class="taskForm">
+            <div class="input-wrapper">
+                <label for="speed" class="form-label">Enter speed:</label>
+                <input type="number" class="form-input" id="speed" required>
+            </div>
+            <div class="input-wrapper">
+                <label for="time" class="form-label">Enter time:</label>
+                <input type="number" class="form-input" id="time" required>
+            </div>
+            <button type="button" class="taskBtn task1Btn">Calculate</button>
+            <p class="taskResult">Result is </p>
         </form>
     `;
 
@@ -76,27 +84,36 @@ const task1Markup = () => {
 }
 
 const task2Solve = () => {
-    console.log("Task2 solve");
-
+    const form = document.querySelector('.taskForm');
+    const resultText = document.querySelector('.taskResult');
     const speed = document.getElementById('speed').value;
     const time = document.getElementById('time').value;
     const acceleration = document.getElementById('acceleration').value;
     
     const task2 = new waySearchTask2(speed, time, acceleration);
     const ress = task2.solveWaySearchTask();
-    console.log("task2 result is: " + ress);
+    resultText.innerHTML = ``;
+    resultText.innerHTML = `Result is ${ress}`;
 }
 
 const task2Markup = () => {
     formWrapper.innerHTML = `
-        <form>
-            <label for="speed">Enter speed:</label>
-            <input type="number" id="speed" required>
-            <label for="time">Enter time:</label>
-            <input type="number" id="time" required>
-            <label for="acceleration">Enter acceleration:</label>
-            <input type="number" id="acceleration" required>
-            <button class="task2Btn" type="button">Calculate</button>
+    <p class="taskLabel">Розрахунок рівнозмінного прямолінійного руху</p>
+        <form class="taskForm">
+            <div class="input-wrapper">
+                <label for="speed" class="form-label">Enter speed:</label>
+                <input type="number" class="form-input" id="speed" required>
+            </div>
+            <div class="input-wrapper">
+                <label for="time" class="form-label">Enter time:</label>
+                <input type="number" class="form-input" id="time" required>
+            </div>
+            <div class="input-wrapper">
+                <label for="acceleration" class="form-label">Enter acceleration:</label>
+                <input type="number" class="form-input" id="acceleration" required>
+            </div>
+            <button class="taskBtn task2Btn" type="button">Calculate</button>
+            <p class="taskResult">Result is </p>
         </form>
     `;
 
@@ -104,16 +121,37 @@ const task2Markup = () => {
     acceptBtn.addEventListener('click', task2Solve);
 }
 
+const task3Solve = () => {
+    const form = document.querySelector('.taskForm');
+    const resultText = document.querySelector('.taskResult');
+    const mass = document.getElementById('mass').value;
+    const volume = document.getElementById('volume').value;
+    
+    const task3 = new densitySearch(mass, volume);
+    const ress = task3.solveDensitySearch();
+    resultText.innerHTML = ``;
+    resultText.innerHTML = `Result is ${ress}`;
+}
+
 const task3Markup = () => {
     formWrapper.innerHTML = `
-        <form>
-            <label for="mass">Enter mass:</label>
-            <input type="number" id="mass" required>
-            <label for="volume">Enter volume:</label>
-            <input type="number" id="volume" required>
-            <button type="submit">Calculate</button>
+    <p class="taskLabel">Розрахунок щільності</p>
+        <form class="taskForm">
+            <div class="input-wrapper">
+                <label for="mass" class="form-label">Enter mass:</label>
+                <input type="number" class="form-input" id="mass" required>
+            </div>
+            <div class="input-wrapper">
+                <label for="volume" class="form-label">Enter volume:</label>
+                <input type="number" class="form-input" id="volume" required>
+            </div>
+            <button class="taskBtn task3Btn" type="button">Calculate</button>
+            <p class="taskResult">Result is </p>
         </form>
     `;
+
+    const acceptBtn = document.querySelector('.task3Btn');
+    acceptBtn.addEventListener('click', task3Solve);
 }
 
 /*Dropdown Menu*/
@@ -134,17 +172,14 @@ $('.dropdown .dropdown-menu li').click(function () {
     const result = selectedId;
     switch (result) {
         case "Task1":
-            console.log("Task1");
             formWrapper.innerHTML= '';
             task1Markup();
             break;
         case "Task2":
-            console.log("Task2");
             formWrapper.innerHTML= '';
             task2Markup();
             break;
         case "Task3":
-            console.log("Task3");
             formWrapper.innerHTML= '';
             task3Markup();
             break;
